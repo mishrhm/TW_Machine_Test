@@ -8,6 +8,11 @@ const LoginPage = () => {
     const [password, setPassword] = useState("");
     const [persistSession, setPersistSession] = useState(false);
 
+    function handleSignIn(e: React.SubmitEvent): void {
+        e.preventDefault();
+        console.log({ userName, password, persistSession })
+    }
+
     return (
         <div className="">
             <Container fluid className="">
@@ -16,7 +21,7 @@ const LoginPage = () => {
                         <Card>
                             <Card.Body>
                                 <h3>Sign in</h3>
-                                <Form>
+                                <Form onSubmit={handleSignIn}>
                                     <Form.Group >
                                         <Form.Control
                                             type="text" placeholder="Username or email"
