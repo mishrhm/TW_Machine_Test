@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import { Navbar } from '../components/navBar';
 import Welcome from '../components/welcome';
@@ -6,9 +6,17 @@ import { SliderHero } from '../components/sliderHero';
 import { MainGrid } from '../components/mainGrid';
 import { LoadMoreButton } from '../components/loadMoreButton';
 import { Footer } from '../components/footer';
+import { useAppDispatch } from '../app/hooks';
+import { fetchCountries } from '../features/countries/countriesSlice';
 
 
 const HomePage: React.FC = () => {
+
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(fetchCountries());
+    }, [dispatch]);
 
 
     return (
