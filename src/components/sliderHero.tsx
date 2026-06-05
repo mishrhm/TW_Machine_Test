@@ -1,6 +1,5 @@
 import { Col, Row } from "react-bootstrap";
 import CustomSlider from "./customSlider";
-import { useAppSelector } from "../app/hooks";
 
 export function SliderHero() {
     return (
@@ -17,13 +16,12 @@ export function SliderHero() {
 
 export function Frame() {
 
-    const { list } = useAppSelector((state) => state.countries);
 
     return (
         <div className="border border-dark h-100 w-100 d-flex flex-column align-items-center justify-content-center min-h-[500px]">
             <div className="  rounded p-3">
                 <img src="https://www.timesworld.com/images/logo.png?v=1.0.1"
-                    alt={`${list[12].name} flag`}
+                    alt={`Times World Logo (:-))`}
                     className="w-100 h-100 object-fit-cover" />
             </div>
         </div>
