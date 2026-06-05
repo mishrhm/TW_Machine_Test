@@ -36,23 +36,47 @@ export const MainGrid = () => {
 
     return (
         <Row className="g-3">
-            {displayedCountries.map((country, idx) => (
-                <Col xs={12} md={6} key={idx}>
-                    <div className="border border-dark p-2 d-flex align-items-center bg-white shadow-md transition-transform hover:translate-y-[-2px]"
-                        style={{ boxShadow: '4px 4px 0px 0px #cfcfcf', }}>
-                        <div
-                            className=" d-flex align-items-center justify-content-center me-3 border "
-                            style={{ width: '100px', height: '80px', flexShrink: 0, }}
-                        >
-                            🖼️
+            {displayedCountries.map((country, idx) => {
+
+                const flagUrl = country.flag;
+                return (
+
+
+
+                    <Col xs={12} md={6} key={idx}>
+                        <div className="border border-dark p-2 d-flex align-items-center bg-white shadow-md transition-transform hover:translate-y-[-2px]"
+                            style={{ boxShadow: '4px 4px 0px 0px #cfcfcf', }}>
+                            <div
+                                className=" d-flex align-items-center justify-content-center me-3 border "
+                                style={{ width: '100px', height: '80px', flexShrink: 0, }}
+                            >
+                                {flagUrl ? (
+                                    <img
+                                        src={flagUrl}
+                                        alt={`${country.name} flag`}
+                                        className="w-100 h-100 object-fit-cover"
+                                        onError={(e) => {
+                                            e.currentTarget.style.display = 'none';
+                                            const parent = e.currentTarget.parentElement;
+                                            if (parent) {
+                                                const span = document.createElement('span');
+                                                span.innerText = '🏳️';
+                                                parent.appendChild(span);
+                                            }
+                                        }}
+                                    />
+                                ) : (
+                                    <span className="fs-3">🏳️</span>
+                                )}
+                            </div>
+                            <div>
+                                <h6 className="mb-1">{country.name}</h6>
+                                <p className="fs-6 text-muted mb-0">{country.region}</p>
+                            </div>
                         </div>
-                        <div>
-                            <h6 className="mb-1">{country.name}</h6>
-                            <p className="fs-6 text-muted mb-0">{country.region}</p>
-                        </div>
-                    </div>
-                </Col>
-            ))}
+                    </Col>
+                );
+            })}
         </Row>
     )
 }
