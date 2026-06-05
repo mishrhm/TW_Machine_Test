@@ -1,4 +1,6 @@
-import { Col, Row } from "react-bootstrap"
+import { Alert, Col, Row, Spinner } from "react-bootstrap"
+import { useAppSelector } from "../app/hooks";
+import type { CountriesState } from "../features/countries/types";
 
 
 // Temporary design array to display initial visual layout elements
@@ -18,9 +20,33 @@ const MOCK_COUNTRIES = [
 ];
 
 export const MainGrid = () => {
+
+    const { list, status, errpr, selectedRegion, visibleCount }: CountriesState = useAppSelector((state) => state.countries);
+
+
+
+    if (status === 'loading') {
+        return (
+            <div className="text-center my-5 py-5">
+                <Spinner animation="border" variant="dark" />
+                <p className="text-muted mt-2 small">Loading countries database...</p>
+            </div>
+        );
+    }
+
+    if (status === 'failed') {
+        return (
+            <Alert variant="danger" className="rounded-0 my-4">
+                {errpr || 'Failed to populate country items.'}
+            </Alert>
+        );
+    }
+
+
+
     return (
         <Row className="g-3">
-            {MOCK_COUNTRIES.map((country, idx) => (
+            {list.map((country, idx) => (
                 <Col xs={12} md={6} key={idx}>
                     <div className="border border-dark p-2 d-flex align-items-center bg-white shadow-md transition-transform hover:translate-y-[-2px]"
                         style={{ boxShadow: '4px 4px 0px 0px #cfcfcf', }}>
