@@ -4,17 +4,23 @@ import CustomSlider from "./customSlider";
 export function SliderHero() {
     return (
         <Row className="g-3 mb-5">
-            <Col xs={12} md={8}>
+            <Col xs={12} md={8} className="order-2 order-md-1">
                 <CustomSlider />
             </Col>
-            <Col xs={12} md={4} className="d-none d-md-block">
-                <div className="border border-dark h-100 d-flex flex-column align-items-center justify-content-center min-h-[300px]">
-                    <div className=" text-xs mb-2">Frame</div>
-                    <div className="  rounded p-3">
-                        <span>🌅</span>
-                    </div>
-                </div>
+            <Col xs={12} md={4} className="d-flex d-md-block order-1 order-md-2">
+                <Frame></Frame>
             </Col>
         </Row>
+    )
+}
+
+export function Frame() {
+    return (
+        <div className="border border-dark h-100 w-100 d-flex flex-column align-items-center justify-content-center min-h-[500px]">
+            <div className=" text-xs mb-2">Frame</div>
+            <div className="  rounded p-3">
+                <span>🌅</span>
+            </div>
+        </div>
     )
 }
