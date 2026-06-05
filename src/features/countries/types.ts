@@ -6,7 +6,7 @@ export interface Country {
 
 export interface CountriesState {
   list: Country[];
-  status: "loading" | "succeeded" | "failed";
+  status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
   selectedRegion: string;
   visibleCount: number; //for pafination
