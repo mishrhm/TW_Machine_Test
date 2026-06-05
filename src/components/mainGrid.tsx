@@ -2,28 +2,18 @@ import { Alert, Col, Row, Spinner } from "react-bootstrap"
 import { useAppSelector } from "../app/hooks";
 import type { CountriesState } from "../features/countries/types";
 
-
-// Temporary design array to display initial visual layout elements
-const MOCK_COUNTRIES = [
-    { name: 'Afghanistan', region: 'Asia' },
-    { name: 'Albania', region: 'Europe' },
-    { name: 'Argentina', region: 'South America' },
-    { name: 'Afghanistan', region: 'Asia' },
-    { name: 'Afghanistan', region: 'Asia' },
-    { name: 'Afghanistan', region: 'Asia' },
-    { name: 'Afghanistan', region: 'Asia' },
-    { name: 'Afghanistan', region: 'Asia' },
-    { name: 'Afghanistan', region: 'Asia' },
-    { name: 'Afghanistan', region: 'Asia' },
-    { name: 'Afghanistan', region: 'Asia' },
-    { name: 'Afghanistan', region: 'Asia' },
-];
-
 export const MainGrid = () => {
 
-    const { list, status, errpr, selectedRegion, visibleCount }: CountriesState = useAppSelector((state) => state.countries);
+    const { list, status, error, selectedRegion, visibleCount }: CountriesState = useAppSelector((state) => state.countries);
 
 
+    const filteredCountries = list.filter((country) => {
+        if (selectedRegion === 'All') return true;
+        return country.region.toLowerCase() === selectedRegion.toLowerCase();
+    });
+
+
+    const displayedCountries = filteredCountries.slice(0, visibleCount);
 
     if (status === 'loading') {
         return (
@@ -37,7 +27,7 @@ export const MainGrid = () => {
     if (status === 'failed') {
         return (
             <Alert variant="danger" className="rounded-0 my-4">
-                {errpr || 'Failed to populate country items.'}
+                {error || 'Failed to populate county items.'}
             </Alert>
         );
     }
@@ -46,7 +36,7 @@ export const MainGrid = () => {
 
     return (
         <Row className="g-3">
-            {list.map((country, idx) => (
+            {displayedCountries.map((country, idx) => (
                 <Col xs={12} md={6} key={idx}>
                     <div className="border border-dark p-2 d-flex align-items-center bg-white shadow-md transition-transform hover:translate-y-[-2px]"
                         style={{ boxShadow: '4px 4px 0px 0px #cfcfcf', }}>
