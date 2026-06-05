@@ -20,6 +20,7 @@ const LoginPage = () => {
                     <Col xs={12} md={5} lg={4} className="mx-auto">
 
                         <h3 className="m-2 fs-2">Sign in</h3>
+                        <h5 className="m-2 py-2 fs-6">New User? <span className="fs-6 text-primary">Create an account</span></h5>
                         <Form onSubmit={handleSignIn}>
                             <Form.Group >
                                 <Form.Control
@@ -51,13 +52,13 @@ const LoginPage = () => {
                         </Form>
                         <div className="d-flex align-items-center my-4">
                             <hr className="flex-grow-1 border-gray-300 my-0" />
-                            <span className="mx-3 text-muted small fw-medium text-nowrap" style={{ fontSize: '0.75rem' }}>
+                            <span className="mx-3 small fw-bold text-nowrap" style={{ fontSize: '0.75rem' }}>
                                 Or Sign In With
                             </span>
                             <hr className="flex-grow-1 border-gray-300 my-0" />
                         </div>
                     </Col>
-                    <Col>
+                    <Col xs={12} md={6} lg={6} className="d-none d-md-flex justify-content-center align-items-center position-relative">
                         Column with the image
                     </Col>
                 </Row>
