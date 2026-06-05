@@ -1,0 +1,16 @@
+.custom-checkbox .form-check-input {
+  border-radius: 0px !important;
+  border-width: 1.5px !important;
+  border-color: #27272a !important;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-top: 0.15rem;
+}
+.custom-checkbox .form-check-input:checked {
+  background-color: #27272a !important;
+  border-color: #27272a !important;
+}
+.custom-checkbox .form-check-label {
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+}
