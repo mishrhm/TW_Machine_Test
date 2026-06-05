@@ -88,7 +88,13 @@ const LoginPage = () => {
                         </div>
                     </Col>
                     <Col xs={12} md={6} lg={6} className="d-none d-md-flex justify-content-center align-items-center position-relative">
-                        Column with the image
+                        <div className="d-flex align-items-center justify-content-center w-100 min-h-[350px]">
+                            <img
+                                src="/login_image.png"
+                                alt="Login Illustration"
+                                className="w-100 h-auto object-contain img-fluid"
+                            />
+                        </div>
                     </Col>
                 </Row>
             </Container>
