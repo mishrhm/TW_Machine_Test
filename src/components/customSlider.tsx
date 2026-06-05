@@ -19,7 +19,7 @@ const CustomSlider: React.FC = () => {
                 <div className="mt-3 font-semibold m-5">Featured Display #{activeSlide + 1}</div>
             </div>
 
-            <div className="position-absolute bottom-0 mb-3 d-flex align-items-center gap-2 bg-white px-3 py-1 rounded-full shadow-sm border">
+            <div className="position-absolute bottom-0 mb-3 d-flex align-items-center gap-2 px-3 py-1 ">
                 <button onClick={handlePrev} className="border-0 bg-transparent fw-bold  hover:text-dark px-1">
                     ←
                 </button>
@@ -29,11 +29,12 @@ const CustomSlider: React.FC = () => {
                         <span
                             key={index}
                             onClick={() => setActiveSlide(index)}
-                            className="rounded-circle cursor-pointer transition-all p-1 m-1"
+                            className="rounded-circle cursor-pointer border"
                             style={{
-                                width: '8px',
-                                height: '8px',
-                                backgroundColor: activeSlide === index ? '#27272a' : '#e4e4e7',
+                                margin: '1px',
+                                width: '12px',
+                                height: '12px',
+                                backgroundColor: activeSlide === index ? '#27272a' : '#ffffff',
                                 display: 'inline-block'
                             }}
                         />
